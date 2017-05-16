@@ -1,0 +1,12 @@
+Client/.dist
+Client/src/.aot/
+Client/node_modules
+Client/.temp
+Client/src/app/**/*.js
+Client/src/app/**/*.js.map
+Client/.vscode/
+Server/ASP.NETCore/src/FoodAPICore/appsettings.production.json
+Server/ASP.NETCore/src/FoodAPICore/Properties/PublishProfiles/
+Server/ASP.NETCore/src/FoodAPICore/obj
+Server/ASP.NETCore/.vs
+Server/ASP.NETCore/src/FoodAPICore/bin

@@ -14,7 +14,7 @@
     "build-web": "npm run webpack-prod",
     "prepare-desktop": "mkdirp ./.temp/electron && ncp assets/electron .temp/electron/ && ncp .dist/web/aot .temp/electron/ && rimraf .dist/desktop/",
     "build-desktop": "npm run prepare-desktop && electron-packager .temp/electron/ --electronVersion=1.6.5 --icon=\"assets/electron/icon\" --platform=win32,linux --out=./.dist/desktop/",
-    "prepare-mobile": "rimraf ./.temp/mobile && mkdirp ./.temp/mobile/www && ncp assets/cordova .temp/mobile/ && ncp .dist/web/aot .temp/mobile/www && rimraf .dist/mobile/ && trash .temp/mobile/www/**/*.js.gz",
+    "prepare-mobile": "rimraf ./.temp/mobile && mkdirp ./.temp/mobile/www && ncp assets/cordova .temp/mobile/ && ncp .dist/web/aot .temp/mobile/www && ncp assets/img .temp/mobile/www/img && rimraf .dist/mobile/ && trash .temp/mobile/www/**/*.js.gz",
     "build-mobile-windows": "mkdirp .dist/mobile/windows && cd .temp/mobile && cordova platform add windows && cordova build windows && cd ../.. && ncp .temp/mobile/platforms/windows .dist/mobile/windows",
     "build-mobile-android": "mkdirp .dist/mobile/android && cd .temp/mobile && cordova platform add android && cordova build android && cd ../.. && ncp .temp/mobile/platforms/android .dist/mobile/android",
     "build-mobile": "npm run prepare-mobile && npm run build-mobile-windows && npm run build-mobile-android && npm run cleanup",

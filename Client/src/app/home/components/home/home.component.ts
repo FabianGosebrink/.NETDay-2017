@@ -1,3 +1,4 @@
+import { AbstractCameraService } from '../../../core/services/camera.service';
 import { FoodDataService } from './../../../core/data-services/food-data.service';
 import { FoodItem } from './../../../shared/models/foodItem.model';
 import { Component, OnInit, NgZone } from '@angular/core';
@@ -23,6 +24,7 @@ export class HomeComponent implements OnInit {
     constructor(private foodDataService: FoodDataService,
         private notificationService: AbstractNotificationService,
         private cpuValueService: CpuValueService,
+        private cameraService: AbstractCameraService,
         private ngZone: NgZone,
         public platformInformationProvider: PlatformInformationProvider) {
 
@@ -40,6 +42,15 @@ export class HomeComponent implements OnInit {
 
     updateFood() {
         this.getRandomMeal();
+    }
+
+    takePicture($event: any, foodItem: FoodItem) {
+        $event.preventDefault();
+        this.cameraService.getPhoto().subscribe((imageString: string) => {
+            this.ngZone.run(() => {
+                foodItem.imageString = imageString;
+            });
+        });
     }
 
     private getFood() {

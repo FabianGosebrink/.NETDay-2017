@@ -20,7 +20,10 @@
 				<ul class="event-list">
 					<li *ngFor="let foodItem of (allFood|async)">
 						<time datetime="2014-07-20">
-							<span class="day">{{foodItem?.type?.charAt(0)}}</span>
+
+							<span *ngIf="!foodItem?.imageString" class="day" (click)="takePicture($event, foodItem)">{{foodItem?.type?.charAt(0)}}</span>
+							<span *ngIf="foodItem?.imageString" class="day"><img class="img-responsive" [src]="foodItem.imageString"></span>
+
 							<span class="month">{{foodItem?.name?.substring(0, 3)}}</span>
 							<span class="year">2014</span>
 							<span class="time">ALL DAY</span>

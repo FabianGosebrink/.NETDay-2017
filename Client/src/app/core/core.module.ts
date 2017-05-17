@@ -1,3 +1,4 @@
+import { AbstractCameraService, cameraFactory } from './services/camera.service';
 import { CommonModule } from '@angular/common';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { FoodDataService } from './data-services/food-data.service';
@@ -29,12 +30,13 @@ export class CoreModule {
                 HttpWrapperService,
                 PlatformInformationProvider,
                 CpuValueService,
-
                 {
                     provide: AbstractNotificationService,
                     useFactory: notificationFactory,
                     deps: [ToasterService]
-                }]
+                },
+                { provide: AbstractCameraService, useFactory: cameraFactory }
+            ]
         };
     }
 }

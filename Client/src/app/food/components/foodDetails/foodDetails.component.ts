@@ -12,15 +12,15 @@ import { FoodDataService } from '../../../core/data-services/food-data.service';
 
 export class FoodDetailsComponent implements OnInit {
 
-    selectedFoodItem: Observable<FoodItem>;
+    selectedFoodItem: FoodItem;
 
     constructor(private route: ActivatedRoute, private foodDataService: FoodDataService) { }
 
     ngOnInit() {
-       this.route.paramMap
+        this.route.paramMap
             .map((paramMap: ParamMap) => paramMap.get('foodId') || '-1')
             .subscribe((foodId: string) => {
-                 this.selectedFoodItem =  this.foodDataService.GetSingleFood(foodId);
+                this.foodDataService.GetSingleFood(foodId).subscribe((food: FoodItem) => this.selectedFoodItem = food);
             });
     }
 }

@@ -19,7 +19,7 @@
     "build-mobile-windows": "mkdirp .dist/mobile/windows && cd .temp/mobile && cordova build && cd ../.. && ncp .temp/mobile/platforms/windows .dist/mobile/windows",
     "build-mobile-android": "mkdirp .dist/mobile/android && cd .temp/mobile && cordova build && cd ../.. && ncp .temp/mobile/platforms/android .dist/mobile/android",
     "build-mobile": "npm run prepare-mobile && npm run generate-mobile-assets && npm run build-mobile-android && npm run build-mobile-windows",
-    "generate-mobile-assets": "cd .temp/mobile && cordova-icon --icon=\"../../assets/img/icon.png\" && cordova-splash --splash=\"../../assets/img/icon.png\"",
+    "generate-mobile-assets": "cd .temp/mobile && cordova-icon --icon=\"../../assets/img/icon.png\" && cordova-splash --splash=\"../../assets/img/splash.png\"",
     "build-all": "rimraf .dist && npm run build-web && npm run build-mobile && npm run build-desktop && npm run cleanup",
     "cleanup": "rimraf .temp"
   },

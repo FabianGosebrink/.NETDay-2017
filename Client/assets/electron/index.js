@@ -26,6 +26,10 @@ app.on('ready', function () {
     mainWindow = null;
   });
 
+  mainWindow.on('closed', () => {
+    win = null;
+  });
+
   globalShortcut.register('CmdOrCtrl+Shift+i', () => {
     mainWindow.webContents.toggleDevTools();
   });
@@ -33,6 +37,10 @@ app.on('ready', function () {
   trayIcon.buildTrayIcon();
   startSendCpuValues();
 });
+
+app.on('window-all-closed', () => {
+  app.quit()
+})
 
 let startSendCpuValues = () => {
   setInterval(() => {

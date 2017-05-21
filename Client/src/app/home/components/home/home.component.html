@@ -18,19 +18,7 @@
 		<div class="row">
 			<div class="thumbnails">
 				<div class="col-md-4" *ngFor="let foodItem of (allFood|async)">
-					<div class="thumbnail">
-						<img *ngIf="!foodItem?.imageString" src="http://placehold.it/320x200" alt="imagestring" (click)="takePicture($event, foodItem)">
-						<img *ngIf="foodItem?.imageString" [src]="foodItem.imageString" alt="imagestring" (click)="takePicture($event, foodItem)">
-						<div class="caption">
-							<h3>{{foodItem?.name}}</h3>
-							<p>{{foodItem?.calories}} Calories</p>
-							<p align="center">
-								<a [routerLink]="['/food', foodItem.id]" class="btn btn-primary btn-block">
-								<i class="fa fa-cutlery fa-fw"></i> 
-								Details</a>
-							</p>
-						</div>
-					</div>
+					<sneakpeek [foodItem]="foodItem"></sneakpeek>
 				</div>
 			</div>
 		</div>
@@ -41,6 +29,7 @@
 		<p>
 			<i class="fa fa-copyright" aria-hidden="true"></i> 2017 Offering Solutions
 			<small *ngIf="platformInformationProvider.isElectron"> - CPU (%): {{percentage}}</small>
+			<small *ngIf="platformInformationProvider.isMobileDevice"> - running on {{platformInformationProvider.platformName}}</small>
 		</p>
 	</footer>
 

@@ -31,6 +31,14 @@ export class PlatformInformationProvider {
         return this._isElectron;
     }
 
+    public get platformName(): any {
+        if (!this.getWindow().device) {
+            return '';
+        }
+        return `${this.getWindow().device.platform} ${this.getWindow().device.model}`;
+    }
+
+
     constructor() {
         this.guessPlatform();
     }
